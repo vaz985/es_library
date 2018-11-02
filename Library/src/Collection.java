@@ -16,7 +16,8 @@ public class Collection {
                 String author     = parts[1];
                 int year          = Integer.parseInt(parts[2]);
                 int quantity      = Integer.parseInt(parts[3]);
-                Title t = new Title(title_name, author, year, quantity);
+                int max_allowance = 5;
+                Title t = new Title(title_name, author, year, quantity, max_allowance);
                 this.database.put(title_name, t);
             }
             this.valid_colection = true;
