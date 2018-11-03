@@ -6,13 +6,13 @@ default	=	classes
 
 
 classes:	prep
-		$(JC)	src/*.java	-d	bin/
+		$(JC)	src/*/*.java	-d	bin/
 
 prep:
 			mkdir	-p	$(BIN)
 
 run:
-			java	-cp	bin	Library
+			java	-cp	bin	models.Library
 
 clean:	
 			rm -r	bin
