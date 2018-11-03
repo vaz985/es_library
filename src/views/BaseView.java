@@ -28,7 +28,7 @@ public abstract class BaseView extends JPanel {
         mainPanel = new JPanel();
         //mainPanel.setBackground(null);
         //mainPanel.setBorder(Util.DEFAULT_BORDER_5);
-        mainPanel.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
         add(mainPanel, BorderLayout.CENTER);
 
