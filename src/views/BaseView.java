@@ -4,10 +4,10 @@ import java.awt.*;
 
 public abstract class BaseView extends JPanel {
 
-    private JPanel topPanel;
-    private JPanel mainPanel;
+    protected JPanel topPanel;
+    protected JPanel mainPanel;
 
-    public void BaseView() {
+    public BaseView() {
 
         //setBackground(null);
         //setBorder(Util.DEFAULT_BORDER_5);

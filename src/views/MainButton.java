@@ -1,5 +1,6 @@
 package views;
-
+import javax.swing.*;
+import java.awt.*;
 public class MainButton extends JButton {
 
     private static final int DEFAULT_HEIGHT = 20;
@@ -10,7 +11,7 @@ public class MainButton extends JButton {
 
         //setBorder();
         setContentAreaFilled(false);
-        setHeight(DEFAULT_HEIGHT);
+        //setHeight(DEFAULT_HEIGHT);
 
     }
 

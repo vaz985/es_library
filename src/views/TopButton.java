@@ -1,5 +1,6 @@
 package views;
-
+import javax.swing.*;
+import java.awt.*;
 public class TopButton extends JButton {
 
     private static final int DEFAULT_HEIGHT = 30;
@@ -11,7 +12,7 @@ public class TopButton extends JButton {
         //setBackground(null);
         //setBorder(Util.DEFAULT_BORDER_5);
         setContentAreaFilled(false);
-        setHeight(DEFAULT_HEIGHT);
+        //setHeight(DEFAULT_HEIGHT);
 
     }
 

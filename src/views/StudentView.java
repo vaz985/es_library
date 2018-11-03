@@ -1,13 +1,12 @@
 package views;
-
+import javax.swing.*;
+import java.awt.*;
 public class StudentView extends BaseView {
 
     private TopButton searchButton;
     private TopButton rentedButton;
 
-
-    public StudentView {
-
+    public StudentView() {
         super();
 
         searchButton = new TopButton("Search");
