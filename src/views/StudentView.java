@@ -1,6 +1,7 @@
 package views;
 import javax.swing.*;
 import java.awt.*;
+
 public class StudentView extends BaseView {
 
     private TopButton searchButton;
