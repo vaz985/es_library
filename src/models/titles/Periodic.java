@@ -1,4 +1,4 @@
-package models;
+package models.titles;
 
 public class Periodic extends Title {
     public Periodic(String title_name, String author, int year, int quantity) {
