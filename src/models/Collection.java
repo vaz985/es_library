@@ -53,4 +53,12 @@ public class Collection {
         return this.database.values();
     }
 
+    public String[] getCollectionNames() {
+        List<String> names = new ArrayList<String>();
+        for(Title t : this.getCollection()) {
+            names.add(t.getTitle_name());
+        }
+        return names.toArray(new String[names.size()]);
+    }
+
 }
