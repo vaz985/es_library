@@ -1,4 +1,5 @@
 import java.*;
+package models;
 
 public class Library {
     private Collection c;

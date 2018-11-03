@@ -1,3 +1,5 @@
+package models;
+
 public class Title {
     private String title_name;
     private String author;
