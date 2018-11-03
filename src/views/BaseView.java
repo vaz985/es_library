@@ -1,14 +1,16 @@
 package views;
+import javax.swing.*;
+import java.awt.*;
 
 public abstract class BaseView extends JPanel {
 
-    private final minHeight = 400;
-    private final minWidth = 360;
+    private final int minHeight = 400;
+    private final int minWidth = 360;
 
     private JPanel topPanel;
     private JPanel mainPanel;
 
-    public BaseView {
+    public void BaseView() {
 
         //setBackground(null);
         //setBorder(Util.DEFAULT_BORDER_5);

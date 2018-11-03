@@ -1,5 +1,5 @@
-import java.*;
 package models;
+import java.*;
 
 public class Library {
     private Collection c;

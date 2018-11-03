@@ -7,12 +7,11 @@ public class Title {
     private int quantity;
     private int max_allowance_time;
 
-    public Title(String title_name, String author, int year, int quantity, int max_allowance_time) {
+    public Title(String title_name, String author, int year, int quantity) {
         this.title_name = title_name;
         this.author = author;
         this.year = year;
         this.quantity = quantity;
-        this.max_allowance_time = max_allowance_time;
     }
 
     public int getMax_allowance_time() {

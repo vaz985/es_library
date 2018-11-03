@@ -1,10 +1,5 @@
 package views;
 
-public StudentView extends BaseView {
-
-
-    public StudentView {
-        super();
-    }
+public class StudentView extends BaseView {
 
 }
