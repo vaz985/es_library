@@ -1,5 +1,5 @@
 package views;
 
-public class UserView extends BaseView{
+public class UserView extends BaseView {
 
 }
