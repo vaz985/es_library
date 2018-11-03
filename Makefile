@@ -6,7 +6,8 @@ default	=	classes
 
 
 classes:	prep
-		$(JC)	src/*/*.java	-d	bin/
+		$(JC)	src/*/*/*.java	-d	bin/
+		$(JC)	-cp	bin	src/*/*.java	-d	bin/
 
 prep:
 			mkdir	-p	$(BIN)
