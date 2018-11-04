@@ -1,21 +1,20 @@
 package models;
 import controllers.StudentSearch;
 import models.users.Student;
+import models.users.User;
 import views.BaseView;
 import views.StudentView;
 
 public class Library {
+    Collection c = new Collection("/home/artv/Desktop/es_library/livros");
+    UserBase   u = new UserBase("/home/artv/Desktop/es_library/usuarios");
 
-    public static void main(String[] argv) {
-
-        Collection c = new Collection("/home/lucas/GitHub/es_library/src/models/livros");
-
-        Student s = new Student("Lucas", 21);
-
-        BaseView theView = new StudentView(s);
-        theView.setVisible(true);
-
-        new StudentSearch(c, theView);
-
+    public UserBase getU() {
+        return u;
     }
+
+    public Collection getC() {
+        return c;
+    }
+
 }

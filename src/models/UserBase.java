@@ -24,12 +24,13 @@ public class UserBase {
             while ((line = br.readLine()) != null) {
                 User u;
                 String[] parts = line.split(";");
+                String type     = parts[0];
                 String username = parts[1];
                 int age         = Integer.parseInt(parts[2]);
-                if(parts[0] == "professor") {
+                if(type.equals("professor")) {
                     u = new Teacher(username, age);
                 }
-                else if(parts[0] == "adm") {
+                else if(type.equals("adm")) {
                     u = new Administrator(username, age);
                 }
                 // Aluno por default
@@ -60,5 +61,11 @@ public class UserBase {
             names.add(u.getName());
         }
         return names.toArray(new String[names.size()]);
+    }
+
+    public User getUser(String name) {
+        if(this.database.containsKey(name))
+            return this.database.get(name);
+        return null;
     }
 }

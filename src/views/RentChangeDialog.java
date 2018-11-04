@@ -1,6 +1,6 @@
 package views;
 
-import controllers.StudentSearch;
+import controllers.*;
 import models.titles.Title;
 
 import javax.swing.*;
@@ -10,16 +10,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class RentDialog extends JFrame {
+public class RentChangeDialog extends JFrame {
 
     public JPanel mainPanel;
+    protected BotPanel botPanel;
     public JButton rentButton;
+    public JButton changeButton;
     public JFrame theFrame;
 
     private static final int DEFAULT_HEIGHT = 180;
     private static final int DEFAULT_WIDTH = 240;
 
-    public RentDialog(Title theTitle, ActionListener rentListener, StudentSearch.RentSelectionListener rentSelectionListener) {
+    public RentChangeDialog(Title theTitle, ActionListener rentListener, TeacherSearch.RentChangeSelectionListener rentSelectionListener) {
         rentSelectionListener.exist = true;
 
         theFrame = this;
@@ -53,9 +55,21 @@ public class RentDialog extends JFrame {
             }
         });
 
+        changeButton = new JButton("Modificar");
+        changeButton.addActionListener(rentListener);
+        changeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                rentSelectionListener.exist = false;
+                theFrame.dispose();
+            }
+        });
 
         thePanel.add(mainPanel, BorderLayout.CENTER);
-        thePanel.add(rentButton, BorderLayout.PAGE_END);
+        botPanel = new BotPanel();
+        botPanel.add(rentButton);
+        botPanel.add(changeButton);
+        thePanel.add(botPanel, BorderLayout.PAGE_END);
 
         this.add(thePanel);
 
