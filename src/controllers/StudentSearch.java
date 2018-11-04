@@ -24,16 +24,18 @@ public class StudentSearch {
         theView = v;
 
         theView.drawList(theCollection.getCollectionNames(), new RentSelectionListener());
-
+        theView.revalidate();
     }
 
     public class RentSelectionListener implements ListSelectionListener {
+        public boolean exist = false;
+
         @Override
         public void valueChanged(ListSelectionEvent listSelectionEvent) {
-            if(!listSelectionEvent.getValueIsAdjusting()) {
+            if(!listSelectionEvent.getValueIsAdjusting() && !exist) {
                 selectedItem = theView.getSelectedItem();
                 System.out.println("Item selected: " + selectedItem + Boolean.toString(listSelectionEvent.getValueIsAdjusting()));
-                new RentDialog(theCollection.getTitle(selectedItem), new RentConfirmationListener()).setVisible(true);
+                new RentDialog(theCollection.getTitle(selectedItem), new RentConfirmationListener(), this).setVisible(true);
             }
         }
     }

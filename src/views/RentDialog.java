@@ -1,5 +1,6 @@
 package views;
 
+import controllers.StudentSearch;
 import models.titles.Title;
 
 import javax.swing.*;
@@ -16,7 +17,8 @@ public class RentDialog extends JFrame {
     private static final int DEFAULT_HEIGHT = 180;
     private static final int DEFAULT_WIDTH = 240;
 
-    public RentDialog(Title theTitle, ActionListener rentListener) {
+    public RentDialog(Title theTitle, ActionListener rentListener, StudentSearch.RentSelectionListener rentSelectionListener) {
+        rentSelectionListener.exist = true;
 
         theFrame = this;
         this.setMinimumSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
@@ -45,6 +47,7 @@ public class RentDialog extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 theFrame.dispose();
+                rentSelectionListener.exist = false;
             }
         });
 
