@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Collection;
+import models.Library;
 import views.BaseView;
 import views.RentDialog;
 
@@ -18,9 +19,9 @@ public class StudentSearch {
 
     private String selectedItem;
 
-    public StudentSearch(Collection c, BaseView v) {
+    public StudentSearch(Library model, BaseView v) {
 
-        theCollection = c;
+        theCollection = model.getC();
         theView = v;
 
         theView.drawList(theCollection.getCollectionNames(), new RentSelectionListener());

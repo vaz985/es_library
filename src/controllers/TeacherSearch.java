@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Collection;
+import models.Library;
 import views.BaseView;
 import views.RentChangeDialog;
 import views.RentDialog;
@@ -17,9 +18,9 @@ public class TeacherSearch {
 
     private String selectedItem;
 
-    public TeacherSearch(Collection c, BaseView v) {
+    public TeacherSearch(Library model, BaseView v) {
 
-        theCollection = c;
+        theCollection = model.getC();
         theView = v;
 
         theView.drawList(theCollection.getCollectionNames(), new TeacherSearch.RentChangeSelectionListener());
