@@ -1,32 +1,36 @@
 package views;
 
-import controllers.AdminSearchControl;
+import controllers.ControlSearch;
 import models.titles.Title;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public abstract class RentDialogView extends JFrame {
+public abstract class DialogSearch extends JFrame {
 
-    protected JFrame theFrame;
-    protected JPanel thePanel;
+    protected JFrame frame;
+    protected JPanel panel;
 
     protected JPanel mainPanel;
     protected JPanel optionsPanel;
 
+    protected JButton rentButton;
+
     private static final int DEFAULT_HEIGHT = 180;
     private static final int DEFAULT_WIDTH = 240;
 
-    public RentDialogView(Title theTitle) {
+    public DialogSearch(Title theTitle, ControlSearch.RentSelectionListener rentSelectionListener, ControlSearch.RentDialogListener rentDialogListener) {
 
-        theFrame = this;
-        this.setMinimumSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+        rentSelectionListener.setExists(true);
 
-        thePanel = new JPanel();
+        frame = this;
+        frame.setMinimumSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
 
-        thePanel.setBackground(Color.LIGHT_GRAY);
-        thePanel.setLayout(new BorderLayout());
+        panel = new JPanel();
+        panel.setBackground(Color.LIGHT_GRAY);
+        panel.setLayout(new BorderLayout());
 
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(6, 2));
@@ -43,7 +47,21 @@ public abstract class RentDialogView extends JFrame {
         mainPanel.add(new JTextArea("Tempo máximo:"));
         mainPanel.add(new JTextArea(Integer.toString(theTitle.getMax_allowance_time()) + " dias"));
 
-        optionsPanel = new OptionsPanel();
+        panel.add(mainPanel, BorderLayout.CENTER);
+
+        optionsPanel = new PanelOptions();
+
+        rentButton = new JButton("Alugar");
+        rentButton.addActionListener(rentDialogListener);
+        rentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                rentSelectionListener.setExists(false);
+                frame.dispose();
+            }
+        });
+
+        optionsPanel.add(rentButton);
 
     }
 

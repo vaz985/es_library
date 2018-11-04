@@ -18,27 +18,27 @@ public class Main {
             username = (new Scanner(System.in)).next();
         }
 
-        BaseView theView;
+        ViewBase theView;
 
         if (u instanceof Teacher) {
             System.out.println("Load Teacher");
-            theView = new SearchView((Teacher) u);
+            theView = new ViewSearch((Teacher) u);
             theView.setVisible(true);
-            new TeacherSearchControl(L, theView, u);
+            new ControlSearchTeacher(L, theView, u);
         }
 
         if (u instanceof Student) {
             System.out.println("Load Student");
-            theView = new SearchView((Student)u);
+            theView = new ViewSearch((Student)u);
             theView.setVisible(true);
-            new StudentSearchControl(L, theView, u);
+            new ControlSearchStudent(L, theView, u);
         }
 
         if (u instanceof Administrator) {
             System.out.println("Load Adm");
-            theView = new SearchView((Administrator)u);
+            theView = new ViewSearch((Administrator)u);
             theView.setVisible(true);
-            new AdminSearchControl(L, theView, u);
+            new ControlSearchAdmin(L, theView, u);
         }
 
     }

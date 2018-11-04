@@ -7,40 +7,52 @@ import models.users.User;
 
 import javax.swing.*;
 
-public class SearchView extends BaseView {
+public class ViewSearch extends ViewBase {
+
     private JButton searchButton  = new JButton("Search");
     private JButton rentedButton  = new JButton("Rented");
     private JButton addUserButton = new JButton("Add Usuario");
     private JButton addBookButton = new JButton("Add Livro");
-    private User currentUser;
 
-    public SearchView(Administrator theUser) {
-        super(theUser.getName() + " (Administrador)");
-        this.setCurrentUser(theUser);
+    private User user;
+
+    public ViewSearch(Administrator admin) {
+
+        super(admin.getName() + " (administrador)");
+        setUser(admin);
 
         optionsPanel.add(searchButton);
         optionsPanel.add(rentedButton);
         optionsPanel.add(addUserButton);
         optionsPanel.add(addBookButton);
+
     }
-    public SearchView(Student theUser) {
-        super(theUser.getName() + " (estudante)");
-        this.setCurrentUser(theUser);
+
+    public ViewSearch(Student student) {
+
+        super(student.getName() + " (estudante)");
+        setUser(student);
 
         optionsPanel.add(searchButton);
         optionsPanel.add(rentedButton);
+
     }
-    public SearchView(Teacher theUser) {
-        super(theUser.getName() + " (professor)");
+
+    public ViewSearch(Teacher teacher) {
+
+        super(teacher.getName() + " (professor)");
 
         optionsPanel.add(searchButton);
         optionsPanel.add(rentedButton);
-    }
-    public User getCurrentUser() {
-        return currentUser;
+
     }
 
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
+    public User getUser() {
+        return user;
     }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

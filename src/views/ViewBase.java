@@ -4,45 +4,45 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 
-public abstract class BaseView extends JFrame {
+public abstract class ViewBase extends JFrame {
 
-    protected OptionsPanel optionsPanel;
+    protected PanelOptions optionsPanel;
 
-    private JList<String> theList;
-    private JScrollPane theScrollPane;
+    protected JList<String> list;
+    protected JScrollPane scrollPane;
 
-//    private JTable table;
-//    private JScrollPane pane;
+//    protected JTable table;
+//    protected JScrollPane pane;
 
     private static final int DEFAULT_HEIGHT = 360;
     private static final int DEFAULT_WIDTH = 480;
 
-    public BaseView(String title) {
+    public ViewBase(String title) {
 
         super(title);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.setBackground(Color.LIGHT_GRAY);
-        this.setLayout(new BorderLayout());
-        this.setMinimumSize(new Dimension(DEFAULT_WIDTH,DEFAULT_HEIGHT+40));
+        setBackground(Color.LIGHT_GRAY);
+        setLayout(new BorderLayout());
+        setMinimumSize(new Dimension(DEFAULT_WIDTH,DEFAULT_HEIGHT+40));
 
-        optionsPanel = new OptionsPanel();
+        optionsPanel = new PanelOptions();
 
-        this.add(optionsPanel, BorderLayout.PAGE_START);
+        add(optionsPanel, BorderLayout.PAGE_START);
 
     }
 
-    public void drawList(String[] list, ListSelectionListener selectionListener) {
+    public void drawList(String[] strings, ListSelectionListener selectionListener) {
 
-        theList = new JList<>(list);
-        theList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        theList.addListSelectionListener(selectionListener);
+        list = new JList<>(strings);
+        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        list.addListSelectionListener(selectionListener);
 
-        theScrollPane = new JScrollPane(theList);
-        theScrollPane.setBackground(Color.WHITE);
+        scrollPane = new JScrollPane(list);
+        scrollPane.setBackground(Color.WHITE);
 
-        this.add(theScrollPane, BorderLayout.CENTER);
+        add(scrollPane, BorderLayout.CENTER);
 
     }
 
@@ -76,7 +76,7 @@ public abstract class BaseView extends JFrame {
 
     public String getSelectedItem() {
 
-        return theList.getSelectedValue();
+        return list.getSelectedValue();
 
     }
 
