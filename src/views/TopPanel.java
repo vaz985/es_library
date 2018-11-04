@@ -6,10 +6,8 @@ public class TopPanel extends JPanel {
 
     public TopPanel() {
 
-        super();
-
-        setBackground(Color.DARK_GRAY);
-        setLayout(new FlowLayout(FlowLayout.CENTER, 5,5));
+        this.setBackground(Color.DARK_GRAY);
+        this.setLayout(new FlowLayout(FlowLayout.CENTER, 5,5));
 
     }
 
