@@ -8,31 +8,39 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] argv) {
 
-        Library L = new Library();
-        System.out.println("Nome do usuario: ");
+        Library L = new Library(argv[0]);
         User u;
+
+        System.out.println("Nome do usuario: ");
         String username = "";
+
         while ((u = L.getU().getUser(username)) == null) {
             username = (new Scanner(System.in)).next();
         }
+
         BaseView theView;
+
         if (u instanceof Teacher) {
             System.out.println("Load Teacher");
-            theView = new UserView((Teacher) u);
+            theView = new SearchView((Teacher) u);
             theView.setVisible(true);
-            new TeacherSearch(L, theView, u);
+            new TeacherSearchControl(L, theView, u);
         }
+
         if (u instanceof Student) {
             System.out.println("Load Student");
-            theView = new UserView((Student)u);
+            theView = new SearchView((Student)u);
             theView.setVisible(true);
-            new StudentSearch(L, theView, u);
+            new StudentSearchControl(L, theView, u);
         }
+
         if (u instanceof Administrator) {
             System.out.println("Load Adm");
-            theView = new UserView((Administrator)u);
+            theView = new SearchView((Administrator)u);
             theView.setVisible(true);
-            new AdminSearch(L, theView, u);
+            new AdminSearchControl(L, theView, u);
         }
+
     }
+
 }

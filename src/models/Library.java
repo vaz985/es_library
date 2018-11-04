@@ -3,8 +3,16 @@ import models.titles.Title;
 import models.users.User;
 
 public class Library {
-    Collection c = new Collection("/home/artv/Desktop/es_library/livros");
-    UserBase   u = new UserBase("/home/artv/Desktop/es_library/usuarios");
+
+    private Collection c;
+    private UserBase   u;
+
+    public Library(String path) {
+
+        c = new Collection(path + "livros");
+        u = new UserBase(path + "usuarios");
+
+    }
 
     public UserBase getU() {
         return u;

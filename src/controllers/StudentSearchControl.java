@@ -4,7 +4,7 @@ import models.Collection;
 import models.Library;
 import models.users.User;
 import views.BaseView;
-import views.StudentDialog;
+import views.StudentRentDialog;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -12,7 +12,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StudentSearch {
+public class StudentSearchControl {
 
     private Collection theCollection;
     private BaseView theView;
@@ -22,7 +22,7 @@ public class StudentSearch {
     private Library model;
     private User currentUser;
 
-    public StudentSearch(Library model, BaseView v, User currentUser) {
+    public StudentSearchControl(Library model, BaseView v, User currentUser) {
         this.model = model;
         this.currentUser = currentUser;
 
@@ -41,7 +41,7 @@ public class StudentSearch {
             if(!listSelectionEvent.getValueIsAdjusting() && !exist) {
                 selectedItem = theView.getSelectedItem();
                 System.out.println("Item selected: " + selectedItem + Boolean.toString(listSelectionEvent.getValueIsAdjusting()));
-                new StudentDialog(theCollection.getTitle(selectedItem), new RentConfirmationListener(), this).setVisible(true);
+                new StudentRentDialog(theCollection.getTitle(selectedItem), new RentConfirmationListener(), this).setVisible(true);
             }
         }
     }

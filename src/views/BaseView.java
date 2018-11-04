@@ -1,17 +1,12 @@
 package views;
 
-import models.titles.Title;
-import models.users.User;
-
 import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collection;
 
 public abstract class BaseView extends JFrame {
 
-    protected TopPanel topPanel;
+    protected OptionsPanel optionsPanel;
 
     private JList<String> theList;
     private JScrollPane theScrollPane;
@@ -32,9 +27,9 @@ public abstract class BaseView extends JFrame {
         this.setLayout(new BorderLayout());
         this.setMinimumSize(new Dimension(DEFAULT_WIDTH,DEFAULT_HEIGHT+40));
 
-        topPanel = new TopPanel();
+        optionsPanel = new OptionsPanel();
 
-        this.add(topPanel, BorderLayout.PAGE_START);
+        this.add(optionsPanel, BorderLayout.PAGE_START);
 
     }
 

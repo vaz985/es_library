@@ -7,34 +7,34 @@ import models.users.User;
 
 import javax.swing.*;
 
-public class UserView extends BaseView {
+public class SearchView extends BaseView {
     private JButton searchButton  = new JButton("Search");
     private JButton rentedButton  = new JButton("Rented");
     private JButton addUserButton = new JButton("Add Usuario");
     private JButton addBookButton = new JButton("Add Livro");
     private User currentUser;
 
-    public UserView(Administrator theUser) {
+    public SearchView(Administrator theUser) {
         super(theUser.getName() + " (Administrador)");
         this.setCurrentUser(theUser);
 
-        topPanel.add(searchButton);
-        topPanel.add(rentedButton);
-        topPanel.add(addUserButton);
-        topPanel.add(addBookButton);
+        optionsPanel.add(searchButton);
+        optionsPanel.add(rentedButton);
+        optionsPanel.add(addUserButton);
+        optionsPanel.add(addBookButton);
     }
-    public UserView(Student theUser) {
+    public SearchView(Student theUser) {
         super(theUser.getName() + " (estudante)");
         this.setCurrentUser(theUser);
 
-        topPanel.add(searchButton);
-        topPanel.add(rentedButton);
+        optionsPanel.add(searchButton);
+        optionsPanel.add(rentedButton);
     }
-    public UserView(Teacher theUser) {
+    public SearchView(Teacher theUser) {
         super(theUser.getName() + " (professor)");
 
-        topPanel.add(searchButton);
-        topPanel.add(rentedButton);
+        optionsPanel.add(searchButton);
+        optionsPanel.add(rentedButton);
     }
     public User getCurrentUser() {
         return currentUser;

@@ -3,9 +3,8 @@ package controllers;
 import models.Collection;
 import models.Library;
 import models.users.User;
-import views.AdminDialog;
 import views.BaseView;
-import views.TeacherDialog;
+import views.TeacherRentDialog;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -13,7 +12,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AdminSearch {
+public class TeacherSearchControl {
     private Collection theCollection;
     private BaseView theView;
 
@@ -22,14 +21,14 @@ public class AdminSearch {
     private Library model;
     private User currentUser;
 
-    public AdminSearch(Library model, BaseView v, User currentUser) {
+    public TeacherSearchControl(Library model, BaseView v, User currentUser) {
         this.model = model;
         this.currentUser = currentUser;
 
         theCollection = model.getC();
         theView = v;
 
-        theView.drawList(theCollection.getCollectionNames(), new AdminSearch.RentChangeSelectionListener());
+        theView.drawList(theCollection.getCollectionNames(), new TeacherSearchControl.RentChangeSelectionListener());
         theView.revalidate();
     }
 
@@ -41,7 +40,7 @@ public class AdminSearch {
             if(!listSelectionEvent.getValueIsAdjusting() && !exist) {
                 selectedItem = theView.getSelectedItem();
                 System.out.println("Item selected: " + selectedItem + Boolean.toString(listSelectionEvent.getValueIsAdjusting()));
-                new AdminDialog(theCollection.getTitle(selectedItem), new RentChangeConfirmationListener(), this).setVisible(true);
+                new TeacherRentDialog(theCollection.getTitle(selectedItem), new TeacherSearchControl.RentChangeConfirmationListener(), this).setVisible(true);
             }
         }
     }
