@@ -1,10 +1,6 @@
 package models;
-import controllers.StudentSearch;
 import models.titles.Title;
-import models.users.Student;
 import models.users.User;
-import views.BaseView;
-import views.StudentView;
 
 public class Library {
     Collection c = new Collection("/home/artv/Desktop/es_library/livros");
