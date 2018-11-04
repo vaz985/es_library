@@ -3,19 +3,24 @@ package models;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import jdk.nashorn.internal.objects.NativeJava;
 import models.titles.Title;
 import models.users.*;
 
 public class UserBase {
     private Map<String, User> database = new HashMap<String, User>();
+    private boolean valid_userbase = false;
 
     private void readFile(String filename) {
         System.out.println("Lendo arquivo: " + filename);
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
+
             while ((line = br.readLine()) != null) {
                 User u;
                 String[] parts = line.split(";");
@@ -32,6 +37,7 @@ public class UserBase {
                     u = new Student(username, age);
                 }
                 this.database.put(username, u);
+                this.valid_userbase = true;
             }
         } catch (IOException e) {
             System.out.println("Erro no arquivo\n" + e.getMessage());
@@ -40,5 +46,19 @@ public class UserBase {
 
     public UserBase(String filename) {
         this.readFile(filename);
+        if(this.valid_userbase)
+            System.out.println("Userbase initialized");
+    }
+
+    public java.util.Collection<User> getCollection() {
+        return this.database.values();
+    }
+
+    public String[] getCollectionNames() {
+        List<String> names = new ArrayList<String>();
+        for(User u : this.getCollection()) {
+            names.add(u.getName());
+        }
+        return names.toArray(new String[names.size()]);
     }
 }
