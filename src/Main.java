@@ -20,13 +20,19 @@ public class Main {
             System.out.println("Load Teacher");
             theView = new TeacherView(u);
             theView.setVisible(true);
-            new TeacherSearch(L, theView);
+            new TeacherSearch(L, theView, u);
         }
         if (u instanceof Student) {
             System.out.println("Load Student");
             theView = new StudentView(u);
             theView.setVisible(true);
-            new StudentSearch(L, theView);
+            new StudentSearch(L, theView, u);
+        }
+        if (u instanceof Administrator) {
+            System.out.println("Load Adm");
+            theView = new AdminView(u);
+            theView.setVisible(true);
+            new AdminSearch(L, theView, u);
         }
     }
 }

@@ -2,15 +2,15 @@ package controllers;
 
 import models.Collection;
 import models.Library;
+import models.users.User;
 import views.BaseView;
-import views.RentDialog;
+import views.StudentDialog;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 
 public class StudentSearch {
 
@@ -19,7 +19,12 @@ public class StudentSearch {
 
     private String selectedItem;
 
-    public StudentSearch(Library model, BaseView v) {
+    private Library model;
+    private User currentUser;
+
+    public StudentSearch(Library model, BaseView v, User currentUser) {
+        this.model = model;
+        this.currentUser = currentUser;
 
         theCollection = model.getC();
         theView = v;
@@ -36,7 +41,7 @@ public class StudentSearch {
             if(!listSelectionEvent.getValueIsAdjusting() && !exist) {
                 selectedItem = theView.getSelectedItem();
                 System.out.println("Item selected: " + selectedItem + Boolean.toString(listSelectionEvent.getValueIsAdjusting()));
-                new RentDialog(theCollection.getTitle(selectedItem), new RentConfirmationListener(), this).setVisible(true);
+                new StudentDialog(theCollection.getTitle(selectedItem), new RentConfirmationListener(), this).setVisible(true);
             }
         }
     }
@@ -44,7 +49,15 @@ public class StudentSearch {
     public class RentConfirmationListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            System.out.println("Item rented: " + selectedItem);
+            if(model.rentBook(currentUser, theCollection.getTitle(selectedItem))) {
+                System.out.println("Item rented: " + selectedItem);
+                System.out.println("Rented copies: " + theCollection.getTitle(selectedItem).getRented());
+            }
+            else {
+                System.out.println("Item not rented: " + selectedItem);
+                String msg = "Todos os titulos estao alugados!!!";
+                JOptionPane.showMessageDialog(new JFrame(), msg, "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 

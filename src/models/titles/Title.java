@@ -5,6 +5,9 @@ public class Title {
     private String author;
     private int year;
     private int quantity;
+
+
+    private int rented = 0;
     private int max_allowance_time;
 
     public Title(String title_name, String author, int year, int quantity) {
@@ -13,6 +16,12 @@ public class Title {
         this.year = year;
         this.quantity = quantity;
     }
+
+    public int getRented() { return this.rented; }
+
+    public void reduceRented() { this.rented--; }
+
+    public void increseRented() { this.rented++; }
 
     public int getMax_allowance_time() {
         return max_allowance_time;

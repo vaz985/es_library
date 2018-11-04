@@ -1,6 +1,7 @@
 package views;
 
-import controllers.*;
+import controllers.AdminSearch;
+import controllers.TeacherSearch;
 import models.titles.Title;
 
 import javax.swing.*;
@@ -10,8 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class RentChangeDialog extends JFrame {
-
+public class AdminDialog extends JFrame {
     public JPanel mainPanel;
     protected BotPanel botPanel;
     public JButton rentButton;
@@ -21,7 +21,7 @@ public class RentChangeDialog extends JFrame {
     private static final int DEFAULT_HEIGHT = 180;
     private static final int DEFAULT_WIDTH = 240;
 
-    public RentChangeDialog(Title theTitle, ActionListener rentListener, TeacherSearch.RentChangeSelectionListener rentSelectionListener) {
+    public AdminDialog(Title theTitle, ActionListener rentListener, AdminSearch.RentChangeSelectionListener rentSelectionListener) {
         rentSelectionListener.exist = true;
 
         theFrame = this;
@@ -33,7 +33,7 @@ public class RentChangeDialog extends JFrame {
         thePanel.setLayout(new BorderLayout());
 
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(5,2));
+        mainPanel.setLayout(new GridLayout(6,2));
         mainPanel.add(new JTextArea("Título:"));
         mainPanel.add(new JTextArea(theTitle.getTitle_name()));
         mainPanel.add(new JTextArea("Autor:"));
@@ -42,6 +42,8 @@ public class RentChangeDialog extends JFrame {
         mainPanel.add(new JTextArea(Integer.toString(theTitle.getYear())));
         mainPanel.add(new JTextArea("Exemplares:"));
         mainPanel.add(new JTextArea(Integer.toString(theTitle.getQuantity())));
+        mainPanel.add(new JTextArea("Alugados:"));
+        mainPanel.add(new JTextArea(Integer.toString(theTitle.getRented())));
         mainPanel.add(new JTextArea("Tempo máximo:"));
         mainPanel.add(new JTextArea(Integer.toString(theTitle.getMax_allowance_time()) + " dias"));
 

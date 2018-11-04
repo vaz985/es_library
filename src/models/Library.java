@@ -1,5 +1,6 @@
 package models;
 import controllers.StudentSearch;
+import models.titles.Title;
 import models.users.Student;
 import models.users.User;
 import views.BaseView;
@@ -15,6 +16,15 @@ public class Library {
 
     public Collection getC() {
         return c;
+    }
+
+    public boolean rentBook(User u, Title t) {
+        if(c.avaliableTitle(t)) {
+            System.out.println("Pode alugar");
+            c.rentTitle(u, t);
+            return true;
+        }
+        return false;
     }
 
 }

@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.util.*;
 
 import models.titles.*;
+import models.users.User;
 
 public class Collection {
     private Map<String, Title> database = new HashMap<String, Title>();
+    private Map<User, Set<Title>> rentedBooks = new HashMap<User, Set<Title>>();
     private boolean valid_colection = false;
 
     private void readFile(String filename) {
@@ -26,6 +28,22 @@ public class Collection {
             this.valid_colection = true;
         } catch (IOException e) {
             System.out.println("Erro no arquivo\n" + e.getMessage());
+        }
+    }
+
+    public boolean avaliableTitle(Title t) {
+        return t.getRented() < t.getQuantity();
+    }
+
+    public void rentTitle(User u, Title t) {
+        t.increseRented();
+        if(this.rentedBooks.containsKey(u)) {
+            this.rentedBooks.get(u).add(t);
+        }
+        else {
+            Set<Title> books = new HashSet<Title>();
+            books.add(t);
+            this.rentedBooks.put(u, books);
         }
     }
 
@@ -49,8 +67,8 @@ public class Collection {
             System.out.println("Database initialized");
     }
 
-    public java.util.Collection<Title> getCollection() {
-        return this.database.values();
+    public ArrayList<Title> getCollection() {
+        return new ArrayList<Title>(this.database.values());
     }
 
     public String[] getCollectionNames() {
