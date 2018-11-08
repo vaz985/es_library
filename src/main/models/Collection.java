@@ -12,6 +12,7 @@ public class Collection {
     private Map<User, Set<Title>> rentedBooks = new HashMap<User, Set<Title>>();
     private boolean valid_colection = false;
 
+    // Parse file for book titles
     private void readFile(String filename) {
         System.out.println("Lendo arquivo: " + filename);
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -58,8 +59,11 @@ public class Collection {
     public Title getTitle(String titleName) {
         if (this.database.containsKey(titleName))
             return this.database.get(titleName);
-        throw new NullPointerException();
+        return null;
     }
+
+    // Empty constructor
+    public Collection() {}
 
     public Collection(String filename) {
         this.readFile(filename);
@@ -79,4 +83,11 @@ public class Collection {
         return names.toArray(new String[names.size()]);
     }
 
+    public Map<String, Title> getDatabase() {
+        return database;
+    }
+
+    public Map<User, Set<Title>> getRentedBooks() {
+        return rentedBooks;
+    }
 }

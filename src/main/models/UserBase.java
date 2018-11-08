@@ -13,6 +13,7 @@ import models.titles.Title;
 import models.users.*;
 
 public class UserBase {
+
     private Map<String, User> database = new HashMap<String, User>();
     private boolean valid_userbase = false;
 
@@ -51,6 +52,9 @@ public class UserBase {
             System.out.println("Userbase initialized");
     }
 
+    // Empty constructor
+    public UserBase() {};
+
     public java.util.Collection<User> getCollection() {
         return this.database.values();
     }
@@ -61,6 +65,10 @@ public class UserBase {
             names.add(u.getName());
         }
         return names.toArray(new String[names.size()]);
+    }
+
+    public void addUser(User u) {
+        this.database.put(u.getName(), u);
     }
 
     public User getUser(String name) {

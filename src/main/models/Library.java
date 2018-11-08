@@ -7,6 +7,11 @@ public class Library {
     private Collection c;
     private UserBase   u;
 
+    public Library(Collection c, UserBase u) {
+        this.c = c;
+        this.u = u;
+    }
+
     public Library(String path) {
 
         c = new Collection(path + "livros");
@@ -23,9 +28,9 @@ public class Library {
     }
 
     public boolean rentBook(User u, Title t) {
-        if(c.avaliableTitle(t)) {
+        if(this.c.avaliableTitle(t) && this.u.getUser(u.getName()) != null) {
             System.out.println("Pode alugar");
-            c.rentTitle(u, t);
+            this.c.rentTitle(u, t);
             return true;
         }
         return false;
