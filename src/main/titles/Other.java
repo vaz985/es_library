@@ -1,4 +1,4 @@
-package models.titles;
+package titles;
 
 public class Other extends Title {
     public Other(String title_name, String author, int year, int quantity) {

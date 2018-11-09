@@ -2,7 +2,7 @@ package controllers;
 
 import models.Collection;
 import models.Library;
-import models.users.User;
+import users.User;
 import views.ViewBase;
 
 import javax.swing.*;

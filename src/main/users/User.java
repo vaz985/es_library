@@ -1,8 +1,8 @@
-package models.users;
-
-import models.titles.Title;
+package users;
 
 import java.util.Set;
+
+import titles.Title;
 
 public class User {
     private String name;

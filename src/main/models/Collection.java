@@ -4,8 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-import models.titles.*;
-import models.users.User;
+import titles.*;
+import users.User;
 
 public class Collection {
     private Map<String, Title> database = new HashMap<String, Title>();

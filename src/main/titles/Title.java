@@ -1,4 +1,4 @@
-package models.titles;
+package titles;
 
 public class Title {
     private String title_name;

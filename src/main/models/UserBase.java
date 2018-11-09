@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import jdk.nashorn.internal.objects.NativeJava;
-import models.titles.Title;
-import models.users.*;
+import titles.Title;
+import users.*;
 
 public class UserBase {
 

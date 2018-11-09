@@ -1,11 +1,11 @@
 package views;
 
-import models.users.Administrator;
-import models.users.Student;
-import models.users.Teacher;
-import models.users.User;
-
 import javax.swing.*;
+
+import users.Administrator;
+import users.Student;
+import users.Teacher;
+import users.User;
 
 public class ViewSearch extends ViewBase {
 

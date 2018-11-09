@@ -1,6 +1,6 @@
 import controllers.*;
 import models.Library;
-import models.users.*;
+import users.*;
 import views.*;
 
 import java.util.Scanner;

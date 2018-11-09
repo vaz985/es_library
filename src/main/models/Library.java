@@ -1,6 +1,6 @@
 package models;
-import models.titles.Title;
-import models.users.User;
+import titles.Title;
+import users.User;
 
 public class Library {
 

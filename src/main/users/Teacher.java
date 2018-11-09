@@ -1,4 +1,4 @@
-package models.users;
+package users;
 
 public class Teacher extends User {
 

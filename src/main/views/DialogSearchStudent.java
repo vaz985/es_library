@@ -2,7 +2,7 @@ package views;
 
 import controllers.ControlSearch;
 import controllers.ControlSearchStudent;
-import models.titles.Title;
+import titles.Title;
 
 import javax.swing.*;
 import java.awt.*;

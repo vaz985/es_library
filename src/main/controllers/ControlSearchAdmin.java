@@ -1,7 +1,7 @@
 package controllers;
 
 import models.Library;
-import models.users.User;
+import users.User;
 import views.DialogSearchAdmin;
 import views.ViewBase;
 

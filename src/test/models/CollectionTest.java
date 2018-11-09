@@ -1,9 +1,12 @@
 package models;
 
-import models.titles.Title;
+import users.User;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import titles.Title;
 
 class CollectionTest {
 
@@ -15,10 +18,6 @@ class CollectionTest {
         assertTrue(c.avaliableTitle(t));
         t.increseRented();
         assertFalse(c.avaliableTitle(t));
-    }
-
-    @Test
-    void rentTitle() {
     }
 
     @Test
@@ -51,11 +50,4 @@ class CollectionTest {
         assertEquals(null, c.getTitle(t1.getTitle_name()));
     }
 
-    @Test
-    void getCollection() {
-    }
-
-    @Test
-    void getCollectionNames() {
-    }
 }
